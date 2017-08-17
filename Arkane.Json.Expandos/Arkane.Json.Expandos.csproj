@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.4</TargetFramework>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>arkane.snk</AssemblyOriginatorKeyFile>
+    <Version>0.1.0</Version>
+    <Authors>Alistair J. R. Young</Authors>
+    <Company>Arkane Systems</Company>
+    <Description>Newtonsoft.JSON converter making it possible to round-trip type-safe ExpandoObjects.</Description>
+    <PackageLicenseUrl>https://github.com/arkane-systems/json-expandoobject/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/arkane-systems/json-expandoobject/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/arkane-systems/json-expandoobject/</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <PackageTags>json json.net dynamic</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <RootNamespace>ArkaneSystems.Json.Expandos</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JetBrains.Annotations" Version="11.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+  </ItemGroup>
+
+</Project>

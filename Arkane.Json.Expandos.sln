@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Arkane.Json.Expandos", "Arkane.Json.Expandos\Arkane.Json.Expandos.csproj", "{4FA5DD5B-DF6D-4F7A-B510-F25025859429}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpandosTests", "ExpandosTests\ExpandosTests.csproj", "{0698D4E2-ED34-446F-BEA5-1F093DF9EF11}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6FDCFEE8-0C49-40F4-BCAB-8E34801EEA93}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4FA5DD5B-DF6D-4F7A-B510-F25025859429}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FA5DD5B-DF6D-4F7A-B510-F25025859429}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FA5DD5B-DF6D-4F7A-B510-F25025859429}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FA5DD5B-DF6D-4F7A-B510-F25025859429}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0698D4E2-ED34-446F-BEA5-1F093DF9EF11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0698D4E2-ED34-446F-BEA5-1F093DF9EF11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0698D4E2-ED34-446F-BEA5-1F093DF9EF11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0698D4E2-ED34-446F-BEA5-1F093DF9EF11}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {73B5A5D5-364A-4762-A227-7972284BBEA7}
+	EndGlobalSection
+EndGlobal
