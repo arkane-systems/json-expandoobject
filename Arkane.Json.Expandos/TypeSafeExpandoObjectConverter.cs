@@ -92,8 +92,7 @@ namespace ArkaneSystems.Json.Expandos
                 {
                     if (serializer.TypeNameHandling != TypeNameHandling.None)
                     {
-                        string typeName, assemblyName ;
-                        ReflectionUtils.SplitFullyQualifiedTypeName (polymorphicTypeString, out typeName, out assemblyName) ;
+                        ReflectionUtils.SplitFullyQualifiedTypeName(polymorphicTypeString, out var typeName, out var assemblyName);
                         polymorphicType = serializer.SerializationBinder.BindToType (assemblyName, typeName) ;
                     }
                     obj.Remove ("$type") ;
