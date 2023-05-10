@@ -5,9 +5,9 @@
 // Alistair J. R. Young
 // Arkane Systems
 // 
-// Copyright Arkane Systems 2012-2017.  All rights reserved.
+// Copyright Arkane Systems 2012-2023.  All rights reserved.
 // 
-// Created: 2017-08-17 5:21 PM
+// Created: 2023-05-10 12:40 AM
 
 #endregion
 
@@ -32,8 +32,8 @@ namespace ArkaneSystems.Json.Expandos
             // Adapted from https://github.com/JamesNK/Newtonsoft.Json/blob/master/Src/Newtonsoft.Json/JsonPosition.cs
 
             var lineInfo = reader as IJsonLineInfo ;
-            string path = reader?.Path ;
-            string message = string.Format (CultureInfo.InvariantCulture, format, args) ;
+            var path     = reader?.Path ;
+            var message  = string.Format (CultureInfo.InvariantCulture, format, args) ;
             if (!message.EndsWith (Environment.NewLine, StringComparison.Ordinal))
             {
                 message = message.Trim () ;
@@ -41,6 +41,7 @@ namespace ArkaneSystems.Json.Expandos
                     message += "." ;
                 message += " " ;
             }
+
             message += string.Format (CultureInfo.InvariantCulture, "Path '{0}'", path) ;
             if (lineInfo?.HasLineInfo () == true)
                 message += string.Format (CultureInfo.InvariantCulture,

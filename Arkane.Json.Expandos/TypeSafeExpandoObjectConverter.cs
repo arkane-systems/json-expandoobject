@@ -5,9 +5,9 @@
 // Alistair J. R. Young
 // Arkane Systems
 // 
-// Copyright Arkane Systems 2012-2017.  All rights reserved.
+// Copyright Arkane Systems 2012-2023.  All rights reserved.
 // 
-// Created: 2017-08-17 5:09 PM
+// Created: 2023-05-10 12:40 AM
 
 #endregion
 
@@ -52,7 +52,7 @@ namespace ArkaneSystems.Json.Expandos
                     if (reader.TokenType.IsPrimitiveToken ())
                         return reader.Value ;
 
-                    throw reader.Create (string.Format ("Unexpected token when converting ExpandoObject: {0}", reader.TokenType)) ;
+                    throw reader.Create ($"Unexpected token when converting ExpandoObject: {reader.TokenType}") ;
             }
         }
 
@@ -68,7 +68,7 @@ namespace ArkaneSystems.Json.Expandos
                     case JsonToken.Comment:
                         break ;
                     default:
-                        object v = this.ReadValue (reader, serializer) ;
+                        var v = this.ReadValue (reader, serializer) ;
 
                         list.Add (v) ;
                         break ;
@@ -84,25 +84,28 @@ namespace ArkaneSystems.Json.Expandos
         {
             if (serializer.TypeNameHandling != TypeNameHandling.None)
             {
-                JObject obj = JObject.Load (reader) ;
+                var obj = JObject.Load (reader) ;
 
-                Type polymorphicType = null ;
-                var polymorphicTypeString = (string) obj["$type"] ;
+                Type polymorphicType       = null ;
+                var  polymorphicTypeString = (string) obj["$type"] ;
                 if (polymorphicTypeString != null)
                 {
                     if (serializer.TypeNameHandling != TypeNameHandling.None)
                     {
-                        ReflectionUtils.SplitFullyQualifiedTypeName(polymorphicTypeString, out var typeName, out var assemblyName);
+                        ReflectionUtils.SplitFullyQualifiedTypeName (polymorphicTypeString,
+                                                                     out var typeName,
+                                                                     out var assemblyName) ;
                         polymorphicType = serializer.SerializationBinder.BindToType (assemblyName, typeName) ;
                     }
+
                     obj.Remove ("$type") ;
                 }
 
                 if ((polymorphicType == null) || (polymorphicType == typeof (ExpandoObject)))
-                    using (JsonReader subReader = obj.CreateReader ())
+                    using (var subReader = obj.CreateReader ())
                         return this.ReadExpandoObject (subReader, serializer) ;
                 else
-                    using (JsonReader subReader = obj.CreateReader ())
+                    using (var subReader = obj.CreateReader ())
                         return serializer.Deserialize (subReader, polymorphicType) ;
             }
 
@@ -118,12 +121,12 @@ namespace ArkaneSystems.Json.Expandos
                 switch (reader.TokenType)
                 {
                     case JsonToken.PropertyName:
-                        string propertyName = reader.Value.ToString () ;
+                        var propertyName = reader.Value.ToString () ;
 
                         if (!reader.Read ())
                             throw reader.Create ("Unexpected end when reading ExpandoObject.") ;
 
-                        object v = this.ReadValue (reader, serializer) ;
+                        var v = this.ReadValue (reader, serializer) ;
 
                         expandoObject[propertyName] = v ;
                         break ;
@@ -147,7 +150,10 @@ namespace ArkaneSystems.Json.Expandos
         }
 
         /// <inheritdoc />
-        public override object ReadJson ([NotNull] JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) =>
+        public override object ReadJson ([NotNull] JsonReader reader,
+                                         Type                 objectType,
+                                         object               existingValue,
+                                         JsonSerializer       serializer) =>
             this.ReadValue (reader, serializer) ;
 
         /// <inheritdoc />
